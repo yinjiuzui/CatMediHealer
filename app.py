@@ -212,15 +212,11 @@ def combine_history(prompt):
 
 
 def main():
-    # torch.cuda.empty_cache()
     print('load model begin.')
     model, tokenizer = load_model()
     print('load model end.')
 
-    user_avator = 'assets/user.png'
-    robot_avator = 'assets/robot.png'
-
-    st.title('InternLM2-Chat-7B')
+    st.title('CatMediHealer_internlm')
 
     generation_config = prepare_generation_config()
 
@@ -230,23 +226,22 @@ def main():
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
-        with st.chat_message(message['role'], avatar=message.get('avatar')):
+        with st.chat_message(message['role']):  # 删除 avatar 参数
             st.markdown(message['content'])
 
     # Accept user input
     if prompt := st.chat_input('What is up?'):
         # Display user message in chat message container
-        with st.chat_message('user', avatar=user_avator):
+        with st.chat_message('user'):  # 删除 avatar 参数
             st.markdown(prompt)
         real_prompt = combine_history(prompt)
         # Add user message to chat history
         st.session_state.messages.append({
             'role': 'user',
-            'content': prompt,
-            'avatar': user_avator
+            'content': prompt
         })
 
-        with st.chat_message('robot', avatar=robot_avator):
+        with st.chat_message('robot'):  # 删除 avatar 参数
             message_placeholder = st.empty()
             for cur_response in generate_interactive(
                     model=model,
@@ -261,11 +256,9 @@ def main():
         # Add robot response to chat history
         st.session_state.messages.append({
             'role': 'robot',
-            'content': cur_response,  # pylint: disable=undefined-loop-variable
-            'avatar': robot_avator,
+            'content': cur_response
         })
         torch.cuda.empty_cache()
-
 
 if __name__ == '__main__':
     main()
