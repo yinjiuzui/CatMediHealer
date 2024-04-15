@@ -15,18 +15,8 @@ conda create --name CatMediHealer_internlm python=3.10 -y
 conda activate CatMediHealer_internlm
 
 # install packages
-pip install torch==2.0.0+cu117 torchvision==0.15.1+cu117 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu117
-pip install pytorch-lightning==1.5.0
-pip install einops
-pip install opencv-python==4.7.0.72
-pip install matplotlib
-pip install omegaconf
-pip install albumentations
-pip install transformers==4.33.2
-pip install xformers==0.0.19
-pip install triton==2.0.0
-pip install open-clip-torch==2.19.0
-pip install diffusers==0.20.2
-pip install scipy==1.10.1
-conda install -c anaconda ipython -y
+pip install transformers==4.35.2
+pip install streamlit==1.24.0
+pip install sentencepiece==0.1.99
+pip install accelerate==0.24.1
 ```
