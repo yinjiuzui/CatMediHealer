@@ -8,11 +8,11 @@
 
 ## 环境配置
 ```bash
-git clone https://github.com/rlawjdghek/StableVITON
-cd StableVITON
+git clone https://github.com/yinjiuzui/CatMediHealer_internlm.git
+cd CatMediHealer_internlm
 
-conda create --name StableVITON python=3.10 -y
-conda activate StableVITON
+conda create --name CatMediHealer_internlm python=3.10 -y
+conda activate CatMediHealer_internlm
 
 # install packages
 pip install torch==2.0.0+cu117 torchvision==0.15.1+cu117 torchaudio==2.0.1 --index-url https://download.pytorch.org/whl/cu117
