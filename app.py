@@ -4,7 +4,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # 设置基础路径
-base_path = './CatMediHealer_internlm'
+base_path = os.path.abspath('CatMediHealer_internlm')
 
 # 检查目录是否存在，如果存在，则跳过克隆步骤
 if not os.path.exists(base_path):
@@ -12,6 +12,10 @@ if not os.path.exists(base_path):
     os.chdir(base_path)
     os.system('git lfs pull')
 
+# Ensure you are in the correct directory if needed
+os.chdir(base_path)
+
+# Load the tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained(base_path, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(base_path, trust_remote_code=True, torch_dtype=torch.float16).cuda()
 
