@@ -16,8 +16,8 @@ if not os.path.exists(base_path):
 os.chdir(base_path)
 
 # Load the tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained("/home/xlab-app-center/CatMediHealer_internlm", trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained("/home/xlab-app-center/CatMediHealer_internlm", trust_remote_code=True, torch_dtype=torch.float16).cuda()
+tokenizer = AutoTokenizer.from_pretrained("/home/xlab-app-center/CatMediHealer_internlm/CatMediHealer_internlm", trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained("/home/xlab-app-center/CatMediHealer_internlm/CatMediHealer_internlm", trust_remote_code=True, torch_dtype=torch.float16).cuda()
 
 def chat(message, history):
     for response, history in model.stream_chat(tokenizer, message, history, max_length=2048, top_p=0.7, temperature=1):
